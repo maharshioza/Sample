@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<form name = "form1" method = "post">
+<input type = "text" name = "txt" placeholder = "Enter category" >
+<input type = "button" id ="myBtn" name = "mybtn" value="Add it" >
+
+<input type = "text" name = "prod" placeholder = "Enter Product">
+<input type = "button" id = "Btn" name = "Btn" value = "Add it">
+<br>
+</br>
+
+<input type = "button" id = "reBtn" name = "reBtn" value = "Remove It">
+
+<br>
+</br>
+</form>
+
+
+<table id = "tab1" ></table>
+
+<script type="text/javascript">
+
+
+var data =[{"category":"Automobile","products":"LandRover"},
+            {"category":"Pharma","products":"Maserati"},
+            {"category":"Fashion","products":"vintage"}];
+
+    var tab1 = document.getElementById("tab1");
+    
+
+function JsonData(){
+
+    for( var i =0 ; i<data.length ; i++)
+    {
+        var tabRow = document.createElement("tr");
+        tabRow.id = "trow" + i;
+
+        var tabDat1 = document.createElement("td");
+        tabDat1.innerHTML = data[i].category;
+
+         btn = document.createElement("button");
+         text1 = document.createTextNode("Remove");
+        
+         btn.id = "btn" + i;
+         btn.addEventListener("click",  rem)
+       
+        btn.appendChild(text1);
+        tabRow.appendChild(btn);
+         
+
+        for( var j =0; j < data.length; j ++)
+            {
+            var tabDat2 = document.createElement("td");
+            tabDat2.innerHTML = data[j].products;
+        
+            tabDat1.appendChild(tabDat2);
+            tabRow.appendChild(tabDat1);
+         }
+
+            
+
+        tab1.appendChild(tabRow);
+    }   
+
+}
+
+JsonData();
+
+function recreateTable()
+{
+    var t1 = document.getElementById("tab1");
+    document.body.removeChild(t1);
+
+    tab1 = document.createElement("table");
+    tab1.id = "tab1";
+    document.body.appendChild(tab1);
+
+    JsonData();
+
+}
+
+function remove(){
+    for(var i = 0 ; i <data.length; i ++){
+    var trw = document.getElementById("trow"+i);
+    tab1.removeChild(trw);
+}
+    
+}
+function rem(){
+  
+  for(var i = 0  ; i <data.length; i++)
+  {
+    if(event.target.id == "btn"+i)
+    {
+        var tw = document.getElementById("trow"+i);
+        tab1.removeChild(tw);
+    }
+  }
+
+}
+
+
+  
+
+//Add category
+document.getElementById("myBtn").addEventListener("click", function addCat(){
+    var new_data = document.form1.txt.value;
+    var new_data1 = "";
+    data.push({"category":new_data,"products":new_data1})
+    recreateTable();
+
+
+})
+//Add Products
+document.getElementById("Btn").addEventListener("click", function addPr(){
+    var new_data2 = document.form1.prod.value;
+    var new_data3 = "";
+    data.push({"products":new_data2});
+    recreateTable();
+
+})
+
+//Remove category & products
+document.getElementById("reBtn").addEventListener("click", function reBT(){
+    remove();
+});
+
+
+
+
+</script>
+</body>
+</html>
+
+

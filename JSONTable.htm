@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form name = "simple" method = "post">
+<input type = "text" name = "txt" placeholder = "add category" >
+<input type = "button" id ="myBtn" name = "mybtn" value="click here" >
+<br>
+</br>
+<input type = "text" name = "prod" placeholder = "Enter Product">
+<input type = "button" id = "Btn" name = "Btn" value = "click">
+</form>
+
+<table id = "tab1"></table>
+
+<script type="text/javascript">
+
+
+var data =[{"category":"Automobile","products":"LandRover"},
+            {"category":"Pharma","products":"Maserati"},
+            {"category":"Fashion","products":"vintage"}];
+
+    var tab1 = document.getElementById("tab1");
+    
+
+function JsonData(){
+
+    for( var i =0 ; i<data.length ; i++)
+    {
+        var tabRow = document.createElement("tr");
+        
+        var tabDat1 = document.createElement("td");
+        tabDat1.innerHTML = data[i].category;
+
+        for( var j =0; j < data.length; j ++)
+            {
+            var tabDat2 = document.createElement("td")
+            tabDat2.innerHTML = data[j].products;
+        
+           tabDat1.appendChild(tabDat2)
+            tabRow.appendChild(tabDat1);
+         }
+
+        tab1.appendChild(tabRow);
+    }   
+
+}
+
+JsonData();
+
+</script>
+</body>
+</html>
+
+

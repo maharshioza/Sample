@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h3>List of Category</h3>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<table id = "tab" class="table table-bordered">
+<tr>
+	<td>Automobile</td>
+	<td>
+	<button id = "btn1" onclick = "pro1()">View Products</button>
+
+	</td>
+</tr>
+<tr>
+	<td>Electronics</td>
+	<td>
+	<button id  = "btn2" onclick = "pro2()">View Products</button>
+	</td>
+</tr>
+<tr>
+	<td>Music</td>
+	<td>
+	<button id = "btn3" onclick="pro3()">View Products</button>
+	</td>
+</tr>
+</table>
+
+
+<script type="text/javascript">
+	function pro1(){
+		window.location = "product_redirect.htm"
+	}
+	function pro2(){
+		window.location = "pro2.htm";
+	}
+	function pro3(){
+		window.location = "pro3.htm";
+	}
+</script>
+
+</body>
+</html>
